@@ -1,12 +1,13 @@
 const readline = require('readline');
-
+const fs = require('fs')
 // Create an interface for input and output
 const rl = readline.createInterface({
   input: process.stdin,  // Read input from the terminal
   output: process.stdout // Output to the terminal
 });
-
-
+//What we are doing up here ^^^ is importing modules into the program using the require method, in order to be able to actualy use them and the functionality they provide
+//This can be either built in modules from node.js itself or things like your own files.
+mainMenu();
 
 function createNotes(){              
   // rl.question prompts the user for input and waits for them to put it in
@@ -40,7 +41,7 @@ function deleteNotes() {
 	fs.unlink("notes.txt", (error) => {
 		if (error) console.log("Error, unable to delete");
 		else console.log("Notes succesfully deleted");
-		mainMenu();
+		
 	});
 }
 
@@ -48,7 +49,7 @@ function deleteNotes() {
 
 
 function mainMenu(){
-
+//Standard Switch, i don't really need a reminder for what this does.
   console.log('What would you like to do? 1: Create a new note. 2: View all notes. 3: Delete your notes. 4: Close Program.')
   rl.question(">", (input) =>{
     switch(input){
