@@ -28,6 +28,7 @@ function viewNotes(){
 //fs.readFile allows you to read the contents of the file with the provided path, also important to remember what coding you want-
 //-in this instance we want text so we use utf-8
   fs.readFile("notes.txt", "utf-8", (error, data) => {
+    fs.access('notex.txt', err => err ? 'does not exist' : 'exists')
 		if (error) console.log("Error, no notes found");
 		else console.log("Your notes:\n" + data);
 		mainMenu();
@@ -41,7 +42,7 @@ function deleteNotes() {
 	fs.unlink("notes.txt", (error) => {
 		if (error) console.log("Error, unable to delete");
 		else console.log("Notes succesfully deleted");
-		
+		mainMenu();
 	});
 }
 
@@ -73,3 +74,8 @@ function mainMenu(){
     }
   })
 }
+
+
+
+
+
